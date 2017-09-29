@@ -43,7 +43,10 @@ describe("Twitter api call", function() {
             done(); 
         });
     });
+    
+    
 }); 
+
 
 var stub = sinon.stub(getty, "makeApiRequest").callsFake(function(callback) {
          callback(null, "http://gettyimages.com/bird.png"); 
@@ -62,6 +65,15 @@ describe("Getty api call", function() {
         });
     }); 
     
-    
+      it("errors", function(done) {
+        
+        getty.makeApiRequest(function(error, imgURI) {
+            //console.log("tweets: " + tweets.length); 
+            console.log("imageURI: " + imgURI); 
+            
+            expect(error).to.be.a('null'); 
+            done(); 
+        });
+    }); 
     
 }); 
